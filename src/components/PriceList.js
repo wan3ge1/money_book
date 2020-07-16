@@ -25,7 +25,7 @@ const PriceList = ({ items, onModifyItem, onDeleteItem }) => {
                   fontSize="30px" 
                   color="#fff" 
                   style={{backgroundColor: '#28a745', padding: '5px', cursor: 'pointer'}} 
-                  onClick={() => onModifyItem(items)}
+                  onClick={() => onModifyItem(item)}
                 />
                 <Ionicon
                   className='rounded-circle' 
@@ -33,7 +33,7 @@ const PriceList = ({ items, onModifyItem, onDeleteItem }) => {
                   fontSize="30px" 
                   color="#fff" 
                   style={{backgroundColor: '#dc3545', padding: '5px', cursor: 'pointer'}} 
-                  onClick={() => onDeleteItem(items)}
+                  onClick={() => onDeleteItem(item)}
                 />
               </div>
             </li>

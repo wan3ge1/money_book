@@ -11,17 +11,12 @@ const generateLinkClass = (current, activeTab, type) => {
 const ViewTabs = ({ activeTab, onTabChange }) => {
   return (
     <Fragment>
-      <ul className="nav nav-tabs nav-fill" id="myTab" role="tablist">
-        <li className="nav-item" role="presentation">
+      <ul className="nav nav-tabs nav-fill">
+        <li className="nav-item">
           <a 
             className={generateLinkClass(LIST_VIEW, activeTab, 'header')}
-            id="list-tab" 
-            data-toggle="tab" 
-            href="#list" 
-            role="tab" 
-            aria-controls="list" 
-            aria-selected="true"
             onClick={e => {e.preventDefault(); onTabChange(LIST_VIEW)}}
+            href='/#'
           >
             <Ionicon
               icon='ios-paper'
@@ -32,16 +27,11 @@ const ViewTabs = ({ activeTab, onTabChange }) => {
             列表模式
           </a>
         </li>
-        <li className="nav-item" role="presentation">
+        <li className="nav-item">
           <a 
             className={generateLinkClass(CHART_VIEW, activeTab, 'header')}
-            id="chart-tab" 
-            data-toggle="tab" 
-            href="#chart" 
-            role="tab" 
-            aria-controls="chart" 
-            aria-selected="false"
             onClick={e => {e.preventDefault(); onTabChange(CHART_VIEW)}}
+            href='/#'
           >
             <Ionicon
               icon='ios-pie'
@@ -53,10 +43,6 @@ const ViewTabs = ({ activeTab, onTabChange }) => {
           </a>
         </li>
       </ul>
-      <div className="tab-content" id="myTabContent">
-        <div className={generateLinkClass(LIST_VIEW, activeTab, 'content')} id="list" role="tabpanel" aria-labelledby="list-tab">列表模式内容</div>
-        <div className={generateLinkClass(CHART_VIEW, activeTab, 'content')} aria-labelledby="chart-tab">图表模式内容</div>
-      </div>
     </Fragment>
   )
 }
