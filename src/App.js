@@ -3,7 +3,8 @@ import logo from './logo.svg'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import PriceList from './components/PriceList'
-import PropTypes from 'prop-types'
+import ViewTab from './components/ViewTab'
+import { LIST_VIEW } from './utility'
 
 const items = [
   {
@@ -33,6 +34,16 @@ const items = [
 ]
 
 class App extends Component {
+
+  constructor (props) {
+    super(props)
+    this.onModifyItem = this.onModifyItem.bind(this)
+    this.onDeleteItem = this.onDeleteItem.bind(this)
+    this.onTabChange = this.onTabChange.bind(this)
+    this.state = {
+      activeTab: LIST_VIEW
+    }
+  }
   
   render () {
     return (
@@ -53,11 +64,30 @@ class App extends Component {
         </header>
         <PriceList
           items={items}
+          onModifyItem={this.onModifyItem}
+          onDeleteItem={this.onDeleteItem}
+        />
+        <ViewTab
+          activeTab={this.state.activeTab}
+          onTabChange={this.onTabChange}
         />
       </div>
     )
   }
 
+  onModifyItem () {
+
+  }
+
+  onDeleteItem () {
+    
+  }
+
+  onTabChange (view) {
+    this.setState(() => ({
+      activeTab: view
+    }))
+  }
 }
 
 export default App;

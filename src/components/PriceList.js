@@ -1,5 +1,6 @@
 import React from 'react'
 import Ionicon from 'react-ionicons'
+import PropTypes from 'prop-types'
 
 const PriceList = ({ items, onModifyItem, onDeleteItem }) => {
   return (
@@ -23,14 +24,16 @@ const PriceList = ({ items, onModifyItem, onDeleteItem }) => {
                   icon='ios-create-outline' 
                   fontSize="30px" 
                   color="#fff" 
-                  style={{backgroundColor: '#28a745', padding: '5px'}} 
+                  style={{backgroundColor: '#28a745', padding: '5px', cursor: 'pointer'}} 
+                  onClick={() => onModifyItem(items)}
                 />
                 <Ionicon
                   className='rounded-circle' 
                   icon='ios-close' 
                   fontSize="30px" 
                   color="#fff" 
-                  style={{backgroundColor: '#dc3545', padding: '5px'}} 
+                  style={{backgroundColor: '#dc3545', padding: '5px', cursor: 'pointer'}} 
+                  onClick={() => onDeleteItem(items)}
                 />
               </div>
             </li>
@@ -40,6 +43,12 @@ const PriceList = ({ items, onModifyItem, onDeleteItem }) => {
       
     </ul>
   )
+}
+
+PriceList.propTypes = {
+  items: PropTypes.array.isRequired,
+  onModifyItem: PropTypes.func.isRequired,
+  onDeleteItem: PropTypes.func.isRequired
 }
 
 export default PriceList
