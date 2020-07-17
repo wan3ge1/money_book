@@ -117,7 +117,7 @@ class Home extends Component {
           }
           {
             this.state.activeTab === CHART_VIEW &&
-            <h2>这里是图表区域</h2>
+            <h2 className='chart-title'>这里是图表区域</h2>
           }
       </Fragment>
     )

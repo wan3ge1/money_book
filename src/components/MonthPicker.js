@@ -62,7 +62,7 @@ class MonthPicker extends Component {
             style={{padding: 0}}
           >
             <div className='d-flex flex-row'>
-              <div className="p-2 d-flex flex-column border-right">
+              <div className="year-range p-2 d-flex flex-column border-right">
                 {
                   range(new Date().getFullYear() - 4, new Date().getFullYear() + 4).map(item => {
                     return (
@@ -78,7 +78,7 @@ class MonthPicker extends Component {
                   })
                 }
               </div>
-              <div className="p-2 d-flex flex-column">
+              <div className="month-range p-2 d-flex flex-column">
                 {
                   range(1, 12).map(item => {
                     return (
