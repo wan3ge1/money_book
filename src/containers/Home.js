@@ -123,8 +123,8 @@ class Home extends Component {
     )
   }
 
-  onModifyItem () {
-
+  onModifyItem (item) {
+    console.log(item)
   }
 
   onCreateItem () {
@@ -152,4 +152,5 @@ class Home extends Component {
 
 }
 
+export { items, category }
 export default Home

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { range, padLeft } from '../utility'
 
 class MonthPicker extends Component {
@@ -12,6 +12,22 @@ class MonthPicker extends Component {
     this.toggleBtnDrop = this.toggleBtnDrop.bind(this)
     this.onSelectYear = this.onSelectYear.bind(this)
     this.onSelectMonth = this.onSelectMonth.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  componentDidMount () {
+    document.addEventListener('click', this.handleClick, false)
+  }
+
+  componentWillUnmount () {
+    document.removeEventListener('click', this.handleClick, false)
+  }
+
+  handleClick (e) {
+    if (this.btn.contains(e.target) || this.menu.contains(e.target)) return false
+    this.setState(() => ({
+      isOpen: false
+    }))
   }
 
   render () {
@@ -19,13 +35,16 @@ class MonthPicker extends Component {
     const { year, month } = this.props
 
     return (
-      <Fragment>
+      <div 
+        className='month-picker-component'
+      >
         <div 
           className={this.state.isOpen ? 'dropdown show' : 'dropdown'}
           style={{textAlign: 'left'}}
         >
           <p style={{margin: '0'}}>选择月份</p>
           <button 
+            ref={btn => this.btn = btn}
             className="btn btn-secondary dropdown-toggle" 
             type="button" 
             id="dropdownMenuButton" 
@@ -37,6 +56,7 @@ class MonthPicker extends Component {
             {`${year}年${padLeft(month)}月`}
           </button>
           <div 
+            ref={menu => this.menu = menu}
             className={this.state.isOpen ? 'dropdown-menu show' : 'dropdown-menu'} 
             aria-labelledby="dropdownMenuButton"
             style={{padding: 0}}
@@ -77,7 +97,7 @@ class MonthPicker extends Component {
             </div>
           </div>
         </div>
-      </Fragment>
+      </div>
     )
   }
 
